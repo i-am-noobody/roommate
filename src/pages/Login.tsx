@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import type { FormEvent ,ChangeEvent } from "react";
 import Navbar from '../components/Navbar';
 import { CircleHelp, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 
+interface FormData {
+  email: string;
+  password: string;
+}
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState<FormData>({ email: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate(); 
 
-  const handleChange = (e) => {
+  
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
 

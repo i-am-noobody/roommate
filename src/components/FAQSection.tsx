@@ -1,11 +1,19 @@
 
-import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react'; // Import ChevronDown for the expand/collapse icon
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react'; 
 
-// CollapsibleFAQItem Component
-// Represents a single FAQ item that can be expanded and collapsed
-const CollapsibleFAQItem = ({ title, content, actions }) => {
-  const [isOpen, setIsOpen] = useState(false); // State to manage the open/close state of the item
+interface FAQItemProps {
+  title: string;
+  content: string;
+  actions?: Array<{
+    text: string;
+    link: string;
+    primary?: boolean;
+  }>;
+}
+
+const CollapsibleFAQItem = ({ title, content, actions }:FAQItemProps) => {
+  const [isOpen, setIsOpen] = useState(false); 
 
   // Toggle function to switch between open and close states
   const toggleOpen = () => {
@@ -14,7 +22,6 @@ const CollapsibleFAQItem = ({ title, content, actions }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md mb-4 overflow-hidden">
-      {/* FAQ Header - Clickable area to toggle content visibility */}
       <div
         className="flex items-center justify-between p-5 cursor-pointer border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-200"
         onClick={toggleOpen}
@@ -22,7 +29,6 @@ const CollapsibleFAQItem = ({ title, content, actions }) => {
         <h3 className="text-lg text-gray-800 select-none">
           {title}
         </h3>
-        {/* Chevron icon rotates based on isOpen state */}
         <ChevronDown
           className={`h-6 w-6 text-gray-600 transition-transform duration-300 ${
             isOpen ? 'rotate-180' : ''
@@ -30,7 +36,6 @@ const CollapsibleFAQItem = ({ title, content, actions }) => {
         />
       </div>
 
-      {/* FAQ Content - Dynamically adjusts height based on content */}
       <div
         className={`grid transition-all duration-300 ease-in-out ${
           isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
@@ -65,10 +70,8 @@ const CollapsibleFAQItem = ({ title, content, actions }) => {
   );
 };
 
-// FAQSection Component
-// Contains the main heading and a list of CollapsibleFAQItems
+
 const FAQSection = () => {
-  // Define your FAQ data here. You can extend this array for more questions.
   const faqData = [
     {
       title: 'I need help finding a room',

@@ -1,8 +1,21 @@
+import { ArrowRight } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react'; // Import the icon type
 
-import React from 'react';
-import { Search, Home, Mail, ArrowRight } from 'lucide-react';
+interface TopicComponentProps {
+  icon: LucideIcon; // Type for Lucide icons
+  title: string;
+  description: string;
+  linkText: string;
+  linkHref: string;
+}
 
-const TopicComponent = ({ icon: IconComponent, title, description, linkText, linkHref }) => {
+const TopicComponent = ({ 
+  icon: IconComponent, 
+  title, 
+  description, 
+  linkText, 
+  linkHref 
+}: TopicComponentProps) => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-start text-left h-full">
       <div className="text-xl mb-4 text-gray-700">
@@ -22,11 +35,10 @@ const TopicComponent = ({ icon: IconComponent, title, description, linkText, lin
         className="flex items-center text-teal-600 font-semibold px-4 py-2 rounded-md transition-colors duration-200 hover:bg-teal-50"
       >
         {linkText}
-        {/* Arrow icon */}
         <ArrowRight size={16} strokeWidth={2} className="ml-2" />
       </a>
     </div>
   );
 };
 
-export default TopicComponent
+export default TopicComponent;

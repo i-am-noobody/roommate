@@ -1,4 +1,3 @@
-import React from 'react'
 import { PersonStanding } from 'lucide-react';
 import { CigaretteOff } from 'lucide-react';
 import { GraduationCap } from 'lucide-react';
