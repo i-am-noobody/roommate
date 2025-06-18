@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../components/Navbar'
 import RoomcardDetails from '../components/RoomcardDetails'
 import Footer from '../components/Footer'
